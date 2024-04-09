@@ -201,7 +201,7 @@ void String::draw(uint8_t t_x, uint8_t t_y, uint16_t t_pos_type) {
     Point2D l_pos = m_pos;
 
     if(t_pos_type & (uint16_t)Position::Center) {
-        m_pos.x -= strlen(m_string)/2 * t_x;;
+        m_pos.x -= (float(strlen(m_string))/2.0f) * t_x;;
         if(__debug__) printf("Centering :: \"%s\"\n", m_string);
     } 
 
@@ -287,15 +287,11 @@ void String::hide_last() {
     Point2D tm_pos = m_pos;
     m_pos = m_last_drawn;
     
-    RGB tm_rgb = *this->get_bg();
-    *this->get_fg() = *this->get_bg();
-    *this->get_bg() = tm_rgb; 
+    std::swap(*this->get_fg(), *this->get_bg());
     
     this->draw(m_font_size);
     
-    tm_rgb = *this->get_bg();
-    *this->get_fg() = *this->get_bg();
-    *this->get_bg() = tm_rgb; 
+    std::swap(*this->get_fg(), *this->get_bg());
 
     m_pos = tm_pos;
 }

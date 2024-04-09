@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include <stdio.h>
+#include "colours.h"
 
 #define __string_buffer__ 256
 #define __debug__ 0
@@ -27,9 +28,7 @@ struct Point2D {
     void print_console();
 };
 
-struct RGB { 
-    uint8_t r, g, b; 
-};
+
 
 class GraphElement {
 private:

@@ -34,4 +34,3 @@ void refresh_screen_op() {
     g_canvas.setTo(cv::Vec3b{0,0,0});
 }
 
-
